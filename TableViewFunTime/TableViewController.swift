@@ -45,23 +45,23 @@ class TableViewController: UITableViewController {
         
         return 1
         
-    }
+    } // repeats the rows within a section
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return favoriteSongs.count
         
-    }
+    } // Creates a new row for every item within the favoriteSongs array.
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
                 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "basicCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "basicCell", for: indexPath) // dequeueReusableCell(withIdentifier:for:) loads a sections in parts to save memory. ex: 0-4 -> 5-9 -> 10-14, as the user scrolls through the table.
 
-        let favoriteSong = favoriteSongs[(indexPath as NSIndexPath).row]
+        let favoriteSong = favoriteSongs[(indexPath as NSIndexPath).row] // set each cell equal to favoriteSong const.
         
-        cell.textLabel?.text = favoriteSong
-
+        cell.textLabel?.text = favoriteSong // if new cell is available, populate it. If new cell is not available, create new one (then populate it)
+        print("Section: \(indexPath.section) -- Row: \(indexPath.row)")
         return cell
     }
  
